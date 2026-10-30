@@ -1,0 +1,191 @@
+/* CollectionCard.css */
+.collection-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+
+.collection-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-hover);
+}
+
+.collection-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── 1. Clean Poster Collage Preview (No buttons on top!) ──── */
+.collection-card__preview {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.collection-card__empty-preview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--surface-2);
+}
+
+/* Poster collage layout */
+.collection-card__grid {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  gap: 2px;
+  background: var(--surface-3);
+}
+
+.collection-card__grid.grid-1 {
+  grid-template-columns: 1fr;
+}
+
+.collection-card__grid.grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.collection-card__grid.grid-3 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.collection-card__grid.grid-3 .collection-card__thumbnail:first-child {
+  grid-row: span 2;
+}
+
+.collection-card__grid.grid-4 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.collection-card__thumbnail {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.collection-card__thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+
+.collection-card:hover .collection-card__thumbnail img {
+  transform: scale(1.04);
+}
+
+.collection-card__thumb-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+/* ── 2. Info Section & Dedicated Actions ────────────────────── */
+.collection-card__info {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.collection-card__title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  transition: color var(--transition);
+}
+
+.collection-card:hover .collection-card__title {
+  color: var(--accent);
+}
+
+.collection-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.collection-card__count {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.collection-card__date {
+  color: var(--text-muted);
+}
+
+/* Action buttons row below info */
+.collection-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.collection-card__action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  flex: 1;
+}
+
+.collection-card__action-btn:hover {
+  background: var(--surface-3);
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.collection-card__action-btn--delete {
+  color: #ff8080;
+  background: rgba(255, 80, 80, 0.08);
+  border-color: rgba(255, 80, 80, 0.25);
+}
+
+.collection-card__action-btn--delete:hover {
+  background: rgba(255, 80, 80, 0.2);
+  border-color: rgba(255, 80, 80, 0.45);
+  color: #ffa0a0;
+}

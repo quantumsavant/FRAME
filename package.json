@@ -1,0 +1,12 @@
+{
+  "name": "react-movie-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FRAME — A distinctive, premium movie discovery platform built with React & Vite",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "lint": "npm --prefix frontend run lint",
+    "preview": "npm --prefix frontend run preview"
+  }
+}

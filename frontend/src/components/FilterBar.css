@@ -1,0 +1,143 @@
+/* FilterBar.css */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+/* Search input */
+.filter-bar__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0 14px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 380px;
+  transition: border-color var(--transition);
+}
+
+.filter-bar__search:focus-within {
+  border-color: var(--border-hover);
+}
+
+.filter-bar__search svg {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.filter-bar__search input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  padding: 10px 0;
+}
+
+.filter-bar__search input::placeholder {
+  color: var(--text-muted);
+}
+
+.filter-bar__search-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color var(--transition);
+  flex-shrink: 0;
+}
+
+.filter-bar__search-clear:hover {
+  color: var(--text-secondary);
+}
+
+/* Sort select */
+.filter-bar__select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filter-bar__select-wrap svg {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.filter-bar__select {
+  appearance: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 10px 36px 10px 36px;
+  cursor: pointer;
+  transition: all var(--transition);
+  min-width: 160px;
+}
+
+.filter-bar__select:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.filter-bar__select option {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.filter-bar__chevron {
+  position: absolute;
+  right: 10px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* Genre filter row */
+.genre-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.genre-filter__chip {
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.genre-filter__chip:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  background: var(--surface-2);
+}
+
+.genre-filter__chip.active {
+  background: var(--accent-dim);
+  border-color: rgba(198, 242, 119, 0.35);
+  color: var(--accent);
+}

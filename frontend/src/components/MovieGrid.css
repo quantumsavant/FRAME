@@ -1,0 +1,89 @@
+/* MovieGrid.css */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 400px) {
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (min-width: 640px) {
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* Skeleton grid items */
+.movie-grid__skeleton-poster {
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-md);
+  margin-bottom: 10px;
+}
+
+.movie-grid__skeleton-title {
+  height: 14px;
+  width: 80%;
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+}
+
+.movie-grid__skeleton-meta {
+  height: 12px;
+  width: 50%;
+  border-radius: var(--radius-sm);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 48px;
+}
+
+.pagination__btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.pagination__btn:hover:not(:disabled) {
+  background: var(--surface-2);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.pagination__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pagination__info {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  padding: 0 8px;
+}

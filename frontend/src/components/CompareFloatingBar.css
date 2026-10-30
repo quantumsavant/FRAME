@@ -1,0 +1,319 @@
+/* CompareFloatingBar.css */
+
+/* Floating bar docked at bottom */
+.compare-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(17, 20, 27, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 169, 60, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(229, 169, 60, 0.15);
+  padding: 10px 18px;
+  border-radius: 100px;
+  animation: dockSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: calc(100vw - 32px);
+}
+
+@keyframes dockSlideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.compare-dock__slots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compare-dock__slot {
+  position: relative;
+  width: 40px;
+  height: 56px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.compare-dock__slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.compare-dock__slot-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 2px;
+}
+
+.compare-dock__slot-empty {
+  width: 40px;
+  height: 56px;
+  border-radius: 6px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  flex-shrink: 0;
+}
+
+.compare-dock__remove-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.75);
+  border: none;
+  color: #ff8080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.compare-dock__slot:hover .compare-dock__remove-btn {
+  opacity: 1;
+}
+
+.compare-dock__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.compare-dock__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.compare-dock__badge {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(229, 169, 60, 0.15);
+  border: 1px solid rgba(229, 169, 60, 0.3);
+  padding: 1px 6px;
+  border-radius: 100px;
+}
+
+.compare-dock__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.compare-dock__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #0B0C0F;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.compare-dock__cta:hover {
+  background: #f0b746;
+  transform: translateY(-1px);
+}
+
+.compare-dock__clear-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all var(--transition);
+}
+
+.compare-dock__clear-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Toast message notification */
+.compare-toast {
+  position: fixed;
+  bottom: 96px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+  animation: toastFadeIn 0.25s ease;
+  white-space: nowrap;
+  max-width: calc(100vw - 32px);
+}
+
+@keyframes toastFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.compare-toast--info {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.compare-toast--success {
+  background: rgba(17, 24, 20, 0.95);
+  border: 1px solid rgba(198, 242, 119, 0.4);
+  color: #c6f277;
+}
+
+.compare-toast--warning {
+  background: rgba(28, 20, 12, 0.95);
+  border: 1px solid rgba(229, 169, 60, 0.5);
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .compare-dock {
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    transform: none;
+    width: auto;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 8px 12px;
+    gap: 8px;
+    border-radius: 16px;
+    justify-content: space-between;
+    animation: dockSlideUpMobile 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes dockSlideUpMobile {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .compare-dock__slots {
+    gap: 6px;
+  }
+
+  .compare-dock__slot {
+    width: 32px;
+    height: 44px;
+    border-radius: 5px;
+  }
+
+  /* Hide empty placeholder boxes on mobile to maximize usable space */
+  .compare-dock__slot-empty {
+    display: none;
+  }
+
+  /* Make remove button always visible and tappable on touch */
+  .compare-dock__remove-btn {
+    opacity: 1;
+    top: -5px;
+    right: -5px;
+    width: 18px;
+    height: 18px;
+    background: rgba(28, 31, 37, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ff8080;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Hide word 'Compare' on mobile, keep icon and count badge */
+  .compare-dock__text {
+    display: none;
+  }
+
+  .compare-dock__title {
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+
+  .compare-dock__badge {
+    font-size: 0.6875rem;
+    padding: 1px 5px;
+  }
+
+  .compare-dock__actions {
+    gap: 6px;
+  }
+
+  .compare-dock__cta {
+    padding: 7px 12px;
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+
+  .compare-dock__clear-btn {
+    padding: 6px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .compare-toast {
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    max-width: calc(100vw - 24px);
+    font-size: 0.8125rem;
+    padding: 8px 14px;
+  }
+}
+

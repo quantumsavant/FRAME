@@ -1,0 +1,617 @@
+/* WatchlistPage.css — Personal Cinema Library */
+
+.library-page-header {
+  margin-bottom: 32px;
+}
+
+.library-header-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.library-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.375rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.library-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  max-width: 600px;
+}
+
+/* ── Stats Strip ────────────────────────────────────────────── */
+.library-stats-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.library-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+
+.library-stat-pill:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-2);
+}
+
+.library-stat-pill .stat-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+}
+
+.library-stat-pill.accent .stat-num {
+  color: var(--accent);
+}
+
+.library-stat-pill.amber .stat-num {
+  color: rgba(229, 169, 60, 1);
+}
+
+.library-stat-pill .stat-percentage {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ── Main Tab Navigation ────────────────────────────────────── */
+.library-nav-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  padding-bottom: 2px;
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.library-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  position: relative;
+  transition: all var(--transition);
+  cursor: pointer;
+  min-height: 38px;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.library-tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.library-tab-btn.active {
+  color: var(--accent);
+}
+
+.library-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(198, 242, 119, 0.5);
+}
+
+.library-tab-badge {
+  padding: 2px 7px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--surface-2);
+  color: var(--text-secondary);
+}
+
+.library-tab-btn.active .library-tab-badge {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+/* ── Toolbar: Filters, Search, Sort ─────────────────────────── */
+.library-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.library-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.library-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  min-height: 36px;
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+  cursor: pointer;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.library-filter-pill:hover {
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.library-filter-pill.active {
+  background: var(--accent);
+  color: #0B0C0F;
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(198, 242, 119, 0.25);
+}
+
+.library-filter-count {
+  font-size: 0.6875rem;
+  opacity: 0.85;
+}
+
+.library-tools-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Quick search inside library */
+.library-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  min-height: 38px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  width: 220px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  transition: border-color var(--transition), width var(--transition);
+}
+
+.library-search-box:focus-within {
+  border-color: var(--accent);
+  width: 260px;
+  max-width: 100%;
+  color: var(--text-primary);
+}
+
+.library-search-box input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.8125rem;
+  width: 100%;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.library-search-clear {
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px;
+}
+
+.library-search-clear:hover {
+  color: var(--text-primary);
+}
+
+/* Sort dropdown */
+.library-sort-select {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  min-height: 38px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.library-sort-select select {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.8125rem;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  min-width: 0;
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.library-sort-select select option {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+/* ── Custom Collections Tab View ────────────────────────────── */
+.collections-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.collections-header-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ── Single Collection Browsing View ────────────────────────── */
+.collection-view-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+.collection-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  transition: color var(--transition);
+  cursor: pointer;
+}
+
+.collection-back-btn:hover {
+  color: var(--accent);
+}
+
+.collection-view-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.collection-view-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.collection-view-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.collection-rename-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.collection-rename-btn:hover {
+  color: var(--text-primary);
+  background: var(--surface-3);
+  border-color: var(--border-hover);
+}
+
+.collection-view-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+.collection-view-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.collection-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(255, 80, 80, 0.1);
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  color: #ff8080;
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.collection-delete-btn:hover {
+  background: rgba(255, 80, 80, 0.2);
+  border-color: rgba(255, 80, 80, 0.5);
+}
+
+
+
+/* ── Collection Starter Suggestion Chips ─────────────────────── */
+.collection-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  justify-content: center;
+}
+
+.collection-suggestion-chip {
+  padding: 6px 12px;
+  background: var(--surface-2);
+  border: 1px dashed var(--border-hover);
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.collection-suggestion-chip:hover {
+  background: var(--surface-3);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Generic Form Modals (Create, Rename, Delete Confirm) ────── */
+.library-dialog-modal {
+  width: 100%;
+  max-width: 440px;
+  background: var(--surface);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-lg), 0 0 32px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: modalScaleUp 0.2s ease;
+}
+
+.library-dialog-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.library-dialog-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.library-dialog-input {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.library-dialog-input:focus {
+  border-color: var(--accent);
+}
+
+.library-dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-danger {
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 80, 80, 0.4);
+  color: #ff8080;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 80, 80, 0.25);
+  border-color: rgba(255, 80, 80, 0.6);
+}
+
+/* ── Balanced Empty State ────────────────────────────────────── */
+.library-empty-state {
+  min-height: 200px !important;
+  padding: 44px 16px !important;
+  gap: 12px !important;
+}
+
+.library-empty-state h3 {
+  font-size: 1.125rem;
+  margin-top: 4px;
+}
+
+.library-empty-state p {
+  font-size: 0.875rem;
+  max-width: 360px;
+}
+
+@media (max-width: 768px) {
+  .library-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 14px;
+    gap: 14px;
+  }
+
+  .library-filter-pills {
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    overflow-x: visible;
+  }
+
+  .library-tools-right {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .library-search-box {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .library-sort-select {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .library-page-header {
+    margin-bottom: 20px;
+  }
+
+  .library-header-main {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .library-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .library-stats-strip {
+    gap: 6px;
+    width: 100%;
+  }
+
+  .library-stat-pill {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    min-height: 32px;
+  }
+
+  .library-nav-tabs {
+    gap: 6px;
+    margin-bottom: 18px;
+    width: 100%;
+  }
+
+  .library-tab-btn {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    min-height: 36px;
+  }
+
+  .library-toolbar {
+    padding: 10px 12px;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .library-filter-pills {
+    gap: 6px;
+  }
+
+  .library-filter-pill {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    min-height: 36px;
+  }
+
+  .library-empty-state {
+    min-height: 160px !important;
+    padding: 30px 12px !important;
+    gap: 10px !important;
+  }
+
+  .library-empty-state svg {
+    width: 38px;
+    height: 38px;
+  }
+}

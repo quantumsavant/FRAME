@@ -1,0 +1,457 @@
+/* MovieCard.css — Redesigned for Clean Cinema Aesthetic & Fully Readable Actions */
+
+.movie-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: visible; /* Allows dropdown menu to pop cleanly */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.movie-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-hover);
+}
+
+.movie-card:focus-within {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* In-Compare card highlight */
+.movie-card.in-compare {
+  border-color: rgba(229, 169, 60, 0.5);
+  box-shadow: 0 0 16px rgba(229, 169, 60, 0.12);
+}
+
+/* ── 1. Clean Poster ────────────────────────────────────────── */
+.movie-card__poster {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: var(--surface-2);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  cursor: pointer;
+}
+
+.movie-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.movie-card:hover .movie-card__img {
+  transform: scale(1.04);
+}
+
+.movie-card__fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--text-muted);
+  padding: 16px;
+  text-align: center;
+  background: var(--surface-2);
+}
+
+.movie-card__fallback-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+/* Poster Badges (Top Left) */
+.movie-card__poster-badges {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.movie-card__rating-badge {
+  background: rgba(11, 12, 15, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  padding: 2px 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--accent);
+  width: fit-content;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.movie-card__watched-badge {
+  background: rgba(11, 12, 15, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(198, 242, 119, 0.4);
+  border-radius: 100px;
+  padding: 2px 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  width: fit-content;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* ── 2. Movie Info Area ─────────────────────────────────────── */
+.movie-card__info {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.movie-card__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.movie-card__title:hover {
+  color: var(--accent);
+}
+
+.movie-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.movie-card__year {
+  color: var(--text-muted);
+}
+
+.movie-card__meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.movie-card__meta-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Personal Rating Tag */
+.movie-card__personal-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  background: rgba(229, 169, 60, 0.14);
+  border: 1px solid rgba(229, 169, 60, 0.35);
+  border-radius: 4px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: rgba(229, 169, 60, 1);
+  margin-left: auto;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.movie-card__personal-tag:hover {
+  background: rgba(229, 169, 60, 0.25);
+  border-color: rgba(229, 169, 60, 0.55);
+}
+
+.movie-card__note-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 2px 5px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: all var(--transition);
+}
+
+.movie-card__note-indicator:hover {
+  background: var(--surface-3);
+  color: #fff;
+}
+
+/* ── 3. Dedicated Actions Area (Two-Row Layout) ──────────────── */
+.movie-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.movie-card__actions-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.movie-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 36px; /* Generous 36px touch target for mobile, tablet, and desktop */
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.movie-card__btn span {
+  white-space: nowrap;
+}
+
+.movie-card__btn:hover {
+  background: var(--surface-3);
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.movie-card__btn:active {
+  transform: translateY(1px);
+}
+
+/* Details button */
+.movie-card__btn--details:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Watchlist save button */
+.movie-card__btn--save.active {
+  background: rgba(198, 242, 119, 0.14);
+  color: var(--accent);
+  border-color: rgba(198, 242, 119, 0.4);
+}
+
+.movie-card__btn--save.active:hover {
+  background: rgba(198, 242, 119, 0.22);
+  border-color: var(--accent);
+}
+
+/* Watchlist remove button (prominent and easily identifiable!) */
+.movie-card__btn--remove {
+  background: rgba(255, 80, 80, 0.12);
+  border-color: rgba(255, 80, 80, 0.35);
+  color: #ff8080;
+  font-weight: 700;
+}
+
+.movie-card__btn--remove:hover {
+  background: rgba(255, 80, 80, 0.25);
+  border-color: rgba(255, 80, 80, 0.55);
+  color: #ffa0a0;
+}
+
+/* Compare button */
+.movie-card__btn--compare.active {
+  background: rgba(229, 169, 60, 0.18);
+  color: rgba(229, 169, 60, 1);
+  border-color: rgba(229, 169, 60, 0.45);
+}
+
+.movie-card__btn--compare.active:hover {
+  background: rgba(229, 169, 60, 0.28);
+  border-color: rgba(229, 169, 60, 0.6);
+}
+
+/* More button (compact icon button) */
+.movie-card__more-wrap {
+  position: relative;
+  flex: 0 0 36px;
+}
+
+.movie-card__btn--more {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  flex: 0 0 36px;
+}
+
+.movie-card__btn--more.active {
+  background: var(--surface-3);
+  color: var(--accent);
+  border-color: var(--border-hover);
+}
+
+/* ── 4. Dropdown Menu for More Actions ──────────────────────── */
+.movie-card__dropdown-menu {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  z-index: 100;
+  background: #191B21;
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg), 0 8px 30px rgba(0, 0, 0, 0.85);
+  min-width: 215px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: dropdownFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.movie-card__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition);
+  width: 100%;
+}
+
+.movie-card__dropdown-item:hover {
+  background: var(--surface-2);
+  color: #fff;
+}
+
+.movie-card__dropdown-item.text-danger {
+  color: #ff8080;
+}
+
+.movie-card__dropdown-item.text-danger:hover {
+  background: rgba(255, 80, 80, 0.15);
+  color: #ffa0a0;
+}
+
+.movie-card__dropdown-badge {
+  margin-left: auto;
+  font-size: 0.6875rem;
+  padding: 1px 6px;
+  border-radius: 100px;
+  background: var(--surface-3);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.movie-card__dropdown-badge.amber {
+  background: rgba(229, 169, 60, 0.15);
+  color: rgba(229, 169, 60, 1);
+}
+
+.movie-card__dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+/* ── Mobile Responsive (375px & 414px) ──────────────────────── */
+@media (max-width: 480px) {
+  .movie-card__info {
+    padding: 10px 10px 12px;
+  }
+
+  .movie-card__actions {
+    gap: 5px;
+    padding-top: 8px;
+  }
+
+  .movie-card__actions-row {
+    gap: 5px;
+  }
+
+  .movie-card__btn {
+    height: 36px;
+    padding: 0 6px;
+    font-size: 0.6875rem;
+  }
+
+  .movie-card__more-wrap {
+    flex: 0 0 36px;
+  }
+
+  .movie-card__btn--more {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+  }
+
+  .movie-card__dropdown-menu {
+    right: -8px;
+    min-width: 200px;
+  }
+}
